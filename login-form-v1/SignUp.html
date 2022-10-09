@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="signup.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <!-- Nhúng file CSS -->
+        </head>
+        <body>
+        <!-- Nhúng file JavaScript -->
+        <script language="javascript" src="kiemtra.js"></script>
+        <form action="" method="POST" onsubmit="validate()">
+        <div class="register">
+        <h1>Register</h1>
+        <p><b>Please fill in the form below to register</b></p>
+        <hr>
+        <label for="username"><b>Email</b></label>
+        <input type="text" placeholder="Email" name="email" id="email">
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="******" name="password" id="password">
+        <label for="password-repeat"><b>Verify your password</b></label>
+        <input type="password" placeholder="******" name="password-repeat" id="password-repeat">
+        <hr>
+        <p>In order to register, please accept our <b><a href="#">Terms & Privacy</a></b>.</p>
+        <button type="submit" class="submit">Register</button>
+        </div>
+
+        <div class="register login">
+        <p>Already have an account? <a href="Login_v1/login.html">Login</a>.</p>
+        </div>
+        </form>
+        <script>
+
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+            function validate() {
+var u = document.getElementById("email").value;
+var p1 = document.getElementById("password").value;
+var p2 = document.getElementById("password-repeat").value; 
+
+if(u== "") {
+alert("Pls type your email!");
+return false;
+}
+if(p1 == "") {
+alert("Pls type your password!");
+return false;
+}
+if(p2 == "") {
+alert("Pls verify your password!");
+return false;
+} 
+
+if (!validateEmail(u))
+{
+    alert ("Invalid email");
+    return false;
+}
+
+if (p1==p2){
+    localStorage.setItem('tendn',u);
+    localStorage.setItem('mk',p1);
+    alert("Register successfully!")
+    location.replace=("C:\Users\ngoct\OneDrive\Máy tính\WebBasicLap\Buoi 10 - Web\login-form-v1\Login_v1\login.html")
+}
+u='';
+p1='';
+p2='';
+ 
+return true;
+}
+        </script>
+        </body>
+</html>
